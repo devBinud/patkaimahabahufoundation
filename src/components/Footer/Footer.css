@@ -1,0 +1,195 @@
+/* Footer.css - Dedicated Styles for Global Footer */
+
+.cureo-footer {
+  position: relative;
+  background-color: var(--primary);
+  background-image: radial-gradient(circle at 15% 0%, rgba(0, 0, 0, 0.25), transparent 60%);
+  color: #ffffff;
+  padding: 3.5rem 1.5rem 1.5rem;
+  margin-top: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  border-top: none !important;
+}
+
+.cureo-footer::before {
+  display: none !important;
+}
+
+.footer-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 2.5rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-brand h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.35rem;
+  color: #ffffff;
+}
+
+.footer-subheading {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
+.footer-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 0.4rem;
+  line-height: 1.55;
+}
+
+.footer-col h4 {
+  position: relative;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.15rem;
+  padding-bottom: 0.5rem;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-col a::before {
+  content: '\203A';
+  display: inline-block;
+  width: 0;
+  margin-right: 0;
+  color: #ffffff;
+  font-weight: 700;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.2s ease, margin-right 0.2s ease, opacity 0.15s ease;
+}
+
+.footer-col a:hover {
+  color: #ffffff !important;
+  transform: translateX(3px);
+}
+
+.footer-col a:hover::before {
+  width: 0.7em;
+  margin-right: 0.35rem;
+  opacity: 1;
+}
+
+.footer-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.footer-info-icon {
+  color: #F4D35E;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.925rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.contact-sub {
+  display: block;
+  font-size: 0.825rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.footer-bottom {
+  max-width: 1240px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.825rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-bottom-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.dev-credit-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.dev-credit-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 850px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-bottom-text {
+    justify-content: center;
+  }
+}

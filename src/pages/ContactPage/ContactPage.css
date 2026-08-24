@@ -1,0 +1,221 @@
+/* ContactPage.css - Full Width Premium Styles */
+
+.contact-page-wrapper {
+  width: 100%;
+  background-color: #f8fafc;
+  min-height: 80vh;
+}
+
+/* Hero Header */
+.contact-hero-header {
+  background: linear-gradient(135deg, #0b6b4f 0%, #064030 100%);
+  padding: 4rem 1.5rem 4.5rem;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+.contact-hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #F4D35E;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  transition: background 0.2s ease;
+}
+
+.contact-back-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-hero-tag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #F4D35E;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.contact-hero-title {
+  font-size: 2.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 0.85rem;
+}
+
+.contact-hero-subtitle {
+  font-size: 1.025rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Main Content Grid Utilizing Full Container Width */
+.contact-main-section {
+  padding: 0 1.5rem 5rem;
+  margin-top: -2.25rem;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-main-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.contact-grid-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Main Details Card */
+.contact-details-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-org-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0 0 0.25rem;
+}
+
+.contact-lead-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e11d48;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.contact-info-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fdf8ea;
+  border: 1px solid #fce8a6;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.contact-info-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.15rem;
+}
+
+.contact-info-text {
+  font-size: 0.925rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.contact-info-link {
+  color: var(--primary) !important;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.contact-gmaps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--primary) !important;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed #cbd5e1;
+}
+
+/* Sidebar Action Card */
+.contact-sidebar-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-sidebar-top {
+  margin-bottom: 2rem;
+}
+
+.sidebar-action-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.sidebar-action-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0 0 0.65rem;
+}
+
+.sidebar-action-desc {
+  font-size: 0.925rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.sidebar-cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .contact-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
