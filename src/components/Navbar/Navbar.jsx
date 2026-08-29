@@ -10,22 +10,21 @@ import {
   FaXmark,
   FaChevronDown,
   FaMagnifyingGlass,
-  FaGlobe,
   FaHeart,
-  FaCalendarCheck
+  FaCalendarCheck,
+  FaUserShield,
+  FaBullhorn
 } from 'react-icons/fa6'
 import { FiMenu } from 'react-icons/fi'
-import logoImg from '../../assets/patkai_logo.jpg'
+import logoImg from '../../assets/logo.png'
 import './Navbar.css'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeMobileDropdown, setActiveMobileDropdown] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLang, setSelectedLang] = useState('English');
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [fontSizeLevel, setFontSizeLevel] = useState('normal'); // 'small', 'normal', 'large'
 
   const location = useLocation();
   const searchInputRef = useRef(null);
@@ -58,7 +57,6 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setSearchOpen(false);
-    setLangDropdownOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -68,10 +66,6 @@ export default function Navbar() {
       }, 100);
     }
   }, [searchOpen]);
-
-  const toggleMobileDropdown = (key) => {
-    setActiveMobileDropdown(activeMobileDropdown === key ? null : key);
-  };
 
   const whatsappNumber = "917002808115";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Pranab Milan Gogoi, I would like to know more about the Assam Flood Relief Drive.")}`;
@@ -95,9 +89,20 @@ export default function Navbar() {
       p.desc.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+  const handleFontResize = (level) => {
+    setFontSizeLevel(level);
+    if (level === 'small') {
+      document.documentElement.style.fontSize = '90%';
+    } else if (level === 'large') {
+      document.documentElement.style.fontSize = '110%';
+    } else {
+      document.documentElement.style.fontSize = '100%';
+    }
+  };
+
   return (
     <header className="cureo-header-wrapper">
-      {/* Top Bar Navy */}
+      {/* 1. TOP NAVY UTILITY BAR (#003853) */}
       <div className="top-bar-navy">
         <div className="top-bar-container">
           <div className="top-bar-left">
@@ -105,42 +110,83 @@ export default function Navbar() {
               <FaPhone size={11} />
               <span>+91 70028 08115</span>
             </a>
+            <span className="topbar-vertical-dashed-divider"></span>
             <span className="topbar-tagline">
-              Assam Flood Relief
+              Patkai Mahabahu Foundation
+            </span>
+            <span className="topbar-vertical-dashed-divider"></span>
+            <span className="topbar-assamese-pillars">
+              মানৱতা <span className="topbar-sub-divider">|</span> পৰিৱেশ <span className="topbar-sub-divider">|</span> স্বাস্থ্য
             </span>
           </div>
 
-          <div className="social-links-top">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook" className="topbar-social-item">
-              <FaFacebookF />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram" className="topbar-social-item">
-              <FaInstagram />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="X (Twitter)" className="topbar-social-item">
-              <FaXTwitter />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube" className="topbar-social-item">
-              <FaYoutube />
-            </a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" title="WhatsApp" className="topbar-social-item">
-              <FaWhatsapp />
+          <div className="top-bar-right">
+            {/* Utility links */}
+            <div className="utility-links-group">
+              <Link to="/philosophy" className="utility-link">Transparency</Link>
+              <Link to="/gallery" className="utility-link">Gallery</Link>
+              <Link to="/contact" className="utility-link">Contact</Link>
+            </div>
+
+            {/* Desktop Full Height Admin Login Button */}
+            <Link to="/contact" className="btn-admin-login desktop-only-btn">
+              <FaUserShield size={12} />
+              <span>Admin Login</span>
+            </Link>
+
+            {/* Mobile Top Navy Bar Donate Button */}
+            <a
+              href="https://flood-relief.pages.dev/contribution"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-header-donate mobile-only-top-donate"
+            >
+              <span>Contribute Now</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Floating Paavai-Style Navigation Bar */}
-      <div className={`cureo-navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-        <div className="header-content">
-
-          {/* Foundation Logo */}
-          <Link to="/" className="brand-wrapper" aria-label="Patkai Mahabahu Foundation Home">
-            <img src={logoImg} alt="Patkai Mahabahu Foundation Logo" className="brand-logo" />
+      {/* 2. MIDDLE WHITE BRAND HEADER BAR (Exact Match to Rashtriya Sewa Bharati) */}
+      <div className="middle-brand-header">
+        <div className="middle-header-container">
+          {/* Logo & Dual-Language Brand Text */}
+          <Link to="/" className="brand-logo-link" aria-label="Patkai Mahabahu Foundation Home">
+            <img src={logoImg} alt="Patkai Mahabahu Foundation Logo" className="header-brand-logo" />
+            <div className="brand-titles-block">
+              <span className="brand-title-assamese">পাটকাই মহাবাহু ফাউণ্ডেচন</span>
+              <h1 className="brand-title-english">Patkai Mahabahu Foundation</h1>
+            </div>
           </Link>
 
+          {/* Action Buttons: Join Us & Donate */}
+          <div className="header-brand-actions">
+            <Link to="/contact" className="btn-header-joinus">
+              Join Us
+            </Link>
+            <Link to="/contribution" className="btn-header-donate">
+              <FaHeart size={13} />
+              <span>Donate</span>
+            </Link>
+
+            {/* Mobile Hamburger Menu Toggle */}
+            <button
+              className="cureo-mobile-menu-btn"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open Mobile Menu"
+            >
+              <FiMenu size={24} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. MAIN NAVIGATION BAR (Solid Deep Teal Blue #005C8A) */}
+      <nav className={`cureo-navbar ${scrolled ? 'navbar-scrolled' : ''}`} aria-label="Main Navigation">
+        <div className="navbar-container">
+
           {/* Desktop Navigation Links */}
-          <nav className="cureo-desktop-nav" aria-label="Main Navigation">
+          <div className="cureo-desktop-nav">
             <ul className="nav-links">
 
               <li className="nav-item">
@@ -153,10 +199,10 @@ export default function Navbar() {
                 </NavLink>
               </li>
 
-              {/* Dropdown 1: About the Drive */}
+              {/* Dropdown 1: About Us */}
               <li className="nav-item has-dropdown">
                 <span className="nav-link">
-                  About the Drive
+                  About Us
                   <FaChevronDown className="dropdown-chevron" />
                 </span>
                 <div className="nav-dropdown-menu">
@@ -171,58 +217,49 @@ export default function Navbar() {
                 </div>
               </li>
 
-              {/* Dropdown 2: Relief Efforts */}
+              {/* Dropdown 2: Impact */}
               <li className="nav-item has-dropdown">
                 <span className="nav-link">
-                  Relief Efforts
+                  Impact
                   <FaChevronDown className="dropdown-chevron" />
                 </span>
                 <div className="nav-dropdown-menu">
                   <div className="dropdown-inner">
-                    <Link to="/specialties" className="dropdown-item">
-                      <span className="dropdown-item-title">Relief Categories</span>
-                    </Link>
                     <Link to="/ground-report" className="dropdown-item">
                       <span className="dropdown-item-title">Ground Dispatch Report</span>
                     </Link>
-                  </div>
-                </div>
-              </li>
-
-              {/* Dropdown 3: Get Involved */}
-              <li className="nav-item has-dropdown">
-                <span className="nav-link">
-                  Get Involved
-                  <FaChevronDown className="dropdown-chevron" />
-                </span>
-                <div className="nav-dropdown-menu">
-                  <div className="dropdown-inner">
-                    <Link to="/contribution" className="dropdown-item">
-                      <span className="dropdown-item-title">Provide Relief Materials</span>
-                    </Link>
-                    <Link to="/appointment" className="dropdown-item">
-                      <span className="dropdown-item-title">Request Relief Assistance</span>
-                    </Link>
-                    <Link to="/contact" className="dropdown-item">
-                      <span className="dropdown-item-title">Drop-off Point & Contact</span>
+                    <Link to="/specialties" className="dropdown-item">
+                      <span className="dropdown-item-title">Relief Categories</span>
                     </Link>
                   </div>
                 </div>
               </li>
 
-              {/* Dropdown 4: Showcase */}
-              <li className="nav-item has-dropdown">
-                <span className="nav-link">
-                  Showcase
-                  <FaChevronDown className="dropdown-chevron" />
-                </span>
-                <div className="nav-dropdown-menu">
-                  <div className="dropdown-inner">
-                    <Link to="/gallery" className="dropdown-item">
-                      <span className="dropdown-item-title">Relief Drive Gallery</span>
-                    </Link>
-                  </div>
-                </div>
+              <li className="nav-item">
+                <NavLink
+                  to="/specialties"
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                >
+                  Our Focus Areas
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/contribution"
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                >
+                  Disaster Management
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/gallery"
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                >
+                  Media & Gallery
+                </NavLink>
               </li>
 
               <li className="nav-item">
@@ -235,27 +272,28 @@ export default function Navbar() {
               </li>
 
             </ul>
-          </nav>
-
-          {/* Action Controls Group */}
-          <div className="header-controls-right">
-
-            {/* DONATE Pill Button */}
-            <Link to="/contribution" className="btn-paavai-donate">
-              <FaHeart size={14} />
-              <span>Contribute</span>
-            </Link>
-
-            {/* Mobile Drawer Button */}
-            <button
-              className="cureo-mobile-menu-btn"
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open Mobile Menu"
-            >
-              <FiMenu size={22} />
-            </button>
           </div>
 
+        </div>
+      </nav>
+
+      {/* 4. "LATEST" ANNOUNCEMENT TICKER BAR (Matching Reference Image) */}
+      <div className="latest-ticker-bar">
+        <div className="ticker-container">
+          <div className="ticker-badge">
+            <FaBullhorn size={11} />
+            <span>LATEST</span>
+          </div>
+          <div className="ticker-content-wrapper">
+            <div className="ticker-text-track">
+              <span className="ticker-text">
+                Patkai Mahabahu Foundation launched the Assam Flood Relief Drive - Emergency ration kits, clean drinking water and shelter materials delivered directly to flood-affected families across Assam. <span className="ticker-diamond">◆</span>
+              </span>
+              <span className="ticker-text">
+                Patkai Mahabahu Foundation launched the Assam Flood Relief Drive - Emergency ration kits, clean drinking water and shelter materials delivered directly to flood-affected families across Assam. <span className="ticker-diamond">◆</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -264,10 +302,9 @@ export default function Navbar() {
       <div className={`mobile-right-drawer ${mobileMenuOpen ? 'active' : ''}`}>
 
         <div className="drawer-header">
-          <div className="drawer-logo-wrap">
-            <span className="drawer-logo-title">PATKAI MAHABAHU</span>
-            <span className="drawer-logo-sub">FOUNDATION</span>
-          </div>
+          <Link to="/" className="brand-logo-link" onClick={() => setMobileMenuOpen(false)}>
+            <img src={logoImg} alt="Patkai Mahabahu Foundation Logo" className="brand-logo drawer-brand-logo" />
+          </Link>
           <button className="drawer-close-btn" onClick={() => setMobileMenuOpen(false)}>
             <FaXmark size={20} />
           </button>
@@ -277,22 +314,22 @@ export default function Navbar() {
           <ul className="drawer-nav-links">
             <li>
               <NavLink to="/" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`} end>
-                Live Relief Dashboard
+                Home / Dashboard
               </NavLink>
             </li>
             <li>
               <NavLink to="/about" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`}>
-                About the Drive
+                About Us
               </NavLink>
             </li>
             <li>
               <NavLink to="/specialties" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`}>
-                Relief Categories
+                Our Focus Areas
               </NavLink>
             </li>
             <li>
               <NavLink to="/contribution" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`}>
-                Provide Relief Materials
+                Disaster Management & Relief
               </NavLink>
             </li>
             <li>
@@ -307,21 +344,21 @@ export default function Navbar() {
             </li>
             <li>
               <NavLink to="/gallery" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`}>
-                Relief Drive Gallery
+                Media & Gallery
               </NavLink>
             </li>
             <li>
               <NavLink to="/contact" className={({ isActive }) => `drawer-nav-link ${isActive ? 'active' : ''}`}>
-                Drop-off Point & Contact
+                Contact Us
               </NavLink>
             </li>
           </ul>
         </div>
 
         <div className="drawer-footer">
-          <Link to="/appointment" className="btn-paavai-donate drawer-cta-btn" style={{ width: '100%', justifyContent: 'center' }}>
-            <FaCalendarCheck size={16} />
-            <span>Request Relief Assistance</span>
+          <Link to="/contribution" className="btn-header-donate" style={{ width: '100%', justifyContent: 'center' }}>
+            <FaHeart size={14} />
+            <span>Donate Now</span>
           </Link>
           <a href="tel:+917002808115" className="drawer-phone-btn">
             <FaPhone size={13} />
@@ -340,7 +377,7 @@ export default function Navbar() {
                 <input
                   ref={searchInputRef}
                   type="text"
-                  placeholder="Search doctor profile, skin care, piles treatment, appointments..."
+                  placeholder="Search ration kits, ground reports, drop-off point..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="search-modal-input"

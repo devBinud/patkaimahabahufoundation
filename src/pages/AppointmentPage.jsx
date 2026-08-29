@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import { 
   FaClipboardList, 
-  FaArrowLeft, 
   FaPhone, 
   FaWhatsapp, 
   FaTruckFast, 
   FaShieldHalved,
   FaLocationDot
 } from 'react-icons/fa6'
-import { addAppointment } from '../admin/adminStore'
 import './AppointmentPage.css'
 
 export default function AppointmentPage() {
@@ -32,12 +31,6 @@ export default function AppointmentPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      addAppointment(formData);
-    } catch (err) {
-      console.error("Failed to save request to store", err);
-    }
 
     const whatsappNumber = "917002808115";
     const textMessage = `*NEW RELIEF ASSISTANCE REQUEST - PATKAI MAHABAHU FOUNDATION*
@@ -69,12 +62,7 @@ _Sent from Patkai Mahabahu Foundation Relief Portal_`;
       {/* Hero Header */}
       <section className="appointment-hero-header">
         <div className="appointment-hero-container">
-          <Link to="/" className="appointment-back-link">
-            <FaArrowLeft size={12} />
-            <span>Back to Live Dashboard</span>
-          </Link>
-
-          <span className="appointment-hero-tag">REQUEST RELIEF ASSISTANCE · EMERGENCY SOS</span>
+          <Breadcrumb currentPage="Request Assistance" />
           <h1 className="appointment-hero-title">Ask For Ration, Medical, Shelter or Rescue Help</h1>
           <p className="appointment-hero-subtitle">
             Request immediate ration supplies, clean water, medical kits, tarpaulins, or boat rescue directly from our ground units across Assam.

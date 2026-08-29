@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
-import { 
-  FaPhone, 
-  FaLocationDot, 
-  FaWhatsapp, 
-  FaClock, 
-  FaHandHoldingHeart, 
-  FaMapLocationDot,
-  FaArrowLeft,
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
+import {
+  FaPhone,
+  FaLocationDot,
+  FaWhatsapp,
+  FaClock,
+  FaHandHoldingHeart,
   FaChevronRight
 } from 'react-icons/fa6'
 import './ContactPage.css'
@@ -17,16 +16,11 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page-wrapper">
-      
+
       {/* Hero Header */}
       <section className="contact-hero-header">
         <div className="contact-hero-container">
-          <Link to="/" className="contact-back-link">
-            <FaArrowLeft size={12} />
-            <span>Back to Live Dashboard</span>
-          </Link>
-
-          <span className="contact-hero-tag">GET IN TOUCH · GROUND COORDINATION</span>
+          <Breadcrumb currentPage="Contact Us" />
           <h1 className="contact-hero-title">Drop-off Point & Contact</h1>
           <p className="contact-hero-subtitle">
             Reach out to coordinate a relief material drop-off, check drive progress, or request emergency support directly from our ground units.
@@ -37,13 +31,13 @@ export default function ContactPage() {
       {/* Main Section (2-Column Full Width Container) */}
       <section className="contact-main-section">
         <div className="contact-main-container">
-          
+
           <div className="contact-grid-layout">
-            
+
             {/* Left Column: Contact Details Card */}
             <div className="contact-details-card">
               <h2 className="contact-org-title">Patkai Mahabahu Foundation</h2>
-              <p className="contact-lead-name">Pranab Milan Gogoi (Lead Ground Coordinator)</p>
+              <p className="contact-lead-name">Pranab Milan Gogoi (Founder-Chairman)</p>
 
               <div className="contact-info-list">
                 <div className="contact-info-item">
@@ -83,16 +77,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-
-              <a 
-                href="https://maps.google.com/maps?q=26.741777,94.220402" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="contact-gmaps-link"
-              >
-                <FaMapLocationDot size={18} />
-                <span>Open Location in Google Maps</span>
-              </a>
             </div>
 
             {/* Right Column: Action Sidebar Card */}
@@ -109,11 +93,6 @@ export default function ContactPage() {
                 <Link to="/appointment" className="btn-hero-primary">
                   <FaHandHoldingHeart />
                   <span>Request Relief Assistance</span>
-                  <FaChevronRight size={14} />
-                </Link>
-
-                <Link to="/contribution" className="btn-hero-secondary">
-                  <span>Pledge Relief Materials</span>
                   <FaChevronRight size={14} />
                 </Link>
               </div>

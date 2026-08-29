@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaPhone, FaArrowLeft, FaMapLocationDot, FaCheck } from 'react-icons/fa6'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
+import { FaPhone, FaMapLocationDot, FaCheck } from 'react-icons/fa6'
 import './ContributionPage.css'
 
 export default function ContributionPage() {
@@ -54,16 +55,11 @@ export default function ContributionPage() {
 
   return (
     <div className="contribution-page-wrapper">
-      
+
       {/* Hero Header */}
       <section className="contribution-hero-header">
         <div className="contribution-hero-container">
-          <Link to="/" className="contribution-back-link">
-            <FaArrowLeft size={12} />
-            <span>Back to Live Dashboard</span>
-          </Link>
-
-          <span className="contribution-hero-tag">FLOOD RELIEF FUND · COMMUNITY DRIVE</span>
+          <Breadcrumb currentPage="Provide Relief Materials" />
           <h1 className="contribution-hero-title">Pledge Relief Materials</h1>
           <p className="contribution-hero-subtitle">
             Tell us what items you can provide, or drop them off directly at our verified ground collection point in Assam.
@@ -74,9 +70,9 @@ export default function ContributionPage() {
       {/* Main Section (2-Column Full Width Container) */}
       <section className="contribution-main-section">
         <div className="contribution-main-container">
-          
+
           <div className="contribution-grid-layout">
-            
+
             {/* Left Column: Form Card */}
             <div className="contribution-form-card">
               {submitted ? (
@@ -88,8 +84,8 @@ export default function ContributionPage() {
                   <p style={{ color: '#64748b', fontSize: '0.975rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                     Your offer now appears on our Live Relief Dashboard. Please drop the items at the collection point shown on the right.
                   </p>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className="btn-hero-secondary"
                     onClick={() => { setSubmitted(false); setFormData({ name: '', phone: '', area: '', items: [], details: '' }); }}
                   >
@@ -98,19 +94,19 @@ export default function ContributionPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
-                  
+
                   {/* 1. Your Details */}
                   <div className="form-section-card">
                     <span className="form-section-title">1. Your Details</span>
-                    
+
                     <div className="form-field-group">
                       <label className="form-label">Your Name *</label>
-                      <input 
-                        type="text" 
-                        placeholder="Full name" 
-                        value={formData.name} 
+                      <input
+                        type="text"
+                        placeholder="Full name"
+                        value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required 
+                        required
                         className="form-input"
                       />
                     </div>
@@ -119,10 +115,10 @@ export default function ContributionPage() {
                       <label className="form-label">
                         Phone Number <span className="form-sub-label">(so we can coordinate pickup)</span>
                       </label>
-                      <input 
-                        type="tel" 
-                        placeholder="10-digit mobile number" 
-                        value={formData.phone} 
+                      <input
+                        type="tel"
+                        placeholder="10-digit mobile number"
+                        value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="form-input"
                       />
@@ -132,10 +128,10 @@ export default function ContributionPage() {
                       <label className="form-label">
                         Your Locality / Village <span className="form-sub-label">(optional)</span>
                       </label>
-                      <input 
-                        type="text" 
-                        placeholder="e.g. Chandan Nagar, Lane 4" 
-                        value={formData.area} 
+                      <input
+                        type="text"
+                        placeholder="e.g. Chandan Nagar, Lane 4"
+                        value={formData.area}
                         onChange={(e) => setFormData({ ...formData, area: e.target.value })}
                         className="form-input"
                       />
@@ -145,16 +141,16 @@ export default function ContributionPage() {
                   {/* 2. Items Checklist */}
                   <div className="form-section-card">
                     <span className="form-section-title">2. What Can You Provide?</span>
-                    
+
                     <div className="items-checkbox-grid">
                       {availableItems.map((it, i) => {
                         const isSelected = formData.items.includes(it.label);
                         return (
                           <label key={i} className={`chk-box-card ${isSelected ? 'selected' : ''}`}>
-                            <input 
-                              type="checkbox" 
-                              checked={isSelected} 
-                              onChange={() => handleCheckboxChange(it.label)} 
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={() => handleCheckboxChange(it.label)}
                               style={{ marginTop: '0.2rem', accentColor: 'var(--primary)' }}
                             />
                             <div>
@@ -170,12 +166,12 @@ export default function ContributionPage() {
                   {/* 3. Details & Quantity */}
                   <div className="form-section-card">
                     <span className="form-section-title">3. Quantity & Additional Notes</span>
-                    
+
                     <div className="form-field-group">
                       <label className="form-label">
                         Rough quantity or notes <span className="form-sub-label">(optional)</span>
                       </label>
-                      <textarea 
+                      <textarea
                         placeholder="e.g. 2 bags of clothes, 5 new bed sheets, 1 carton baby food"
                         value={formData.details}
                         onChange={(e) => setFormData({ ...formData, details: e.target.value })}
@@ -207,30 +203,12 @@ export default function ContributionPage() {
               </p>
 
               <div className="sidebar-contact-highlight">
-                <span className="sidebar-contact-name">Lead Ground Coordinator</span>
+                <span className="sidebar-contact-name">Founder-Chairman</span>
                 <a href="tel:7002808115" className="sidebar-contact-phone">
                   Pranab Milan Gogoi: +91 7002808115
                 </a>
               </div>
 
-              <div className="sidebar-directions-box">
-                <p className="sidebar-direction-item">
-                  <strong>From Bongal Pukhuri side:</strong> Cross Lane 10, 2nd house on the left.
-                </p>
-                <p className="sidebar-direction-item">
-                  <strong>From Rajabari side:</strong> Cross Lane 11 & 12, 4th house on the right.
-                </p>
-
-                <a 
-                  href="https://maps.google.com/maps?q=26.741777,94.220402" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="sidebar-gmaps-btn"
-                >
-                  <FaMapLocationDot />
-                  <span>Open Location in Google Maps</span>
-                </a>
-              </div>
             </div>
 
           </div>

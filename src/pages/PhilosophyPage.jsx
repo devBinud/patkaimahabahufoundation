@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb'
 import { FaChevronDown, FaHandHoldingHeart, FaCircleQuestion } from 'react-icons/fa6'
+import './PhilosophyPage.css'
 
 export default function PhilosophyPage() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -17,7 +19,7 @@ export default function PhilosophyPage() {
     },
     {
       question: "Can I provide relief materials without visiting the drop-off point myself?",
-      assamese: "নিজে গৈ নথৈ ৰিলিফ সামগ্ৰী দিব পাৰিমনে? হয়, আপুনি WhatsApp-ৰ জৰিয়তে আমাৰ সংগঠকৰ সৈতে যোগাযোগ কৰিব পাৰে আৰু সংগ্ৰহৰ ব্যৱস্থা কৰিব পাৰি।",
+      assamese: "নিজে গৈ নথৈ ৰিলিফ সামগ্ৰী দিব পাৰিমনে? হয়, আপুনি WhatsApp-ৰ জৰিয়তে আমাৰ সংগঠকৰ সৈতে যোগাযোগ কৰিব পাৰি আৰু সংগ্ৰহৰ ব্যৱস্থা কৰিব পাৰি।",
       english: "Yes. Message our ground coordinator on WhatsApp and we can arrange pickup for larger contributions, or you can drop items at the Deochora collection point any day between 9 AM and 7 PM."
     },
     {
@@ -38,53 +40,65 @@ export default function PhilosophyPage() {
   ];
 
   return (
-    <div className="section" style={{ marginTop: '2.5rem' }}>
-      <div className="section-header">
-        <span className="section-tag">FREQUENTLY ASKED QUESTIONS</span>
-        <h2 className="section-title">FAQs & Transparency</h2>
-        <p className="section-desc">Understanding how the relief drive works, how contributions are tracked, and how to get involved.</p>
-      </div>
+    <div className="philosophy-page-wrapper">
+      {/* Hero Header */}
+      <section className="philosophy-hero-header">
+        <div className="philosophy-hero-container">
+          <Breadcrumb currentPage="FAQs & Transparency" />
+          <h1 className="philosophy-hero-title">Frequently Asked Questions</h1>
+          <p className="philosophy-hero-subtitle">
+            Find answers regarding relief material pledges, ground distribution tracking, and how our volunteer team operates across Assam.
+          </p>
+        </div>
+      </section>
 
-      <div className="faq-container">
-        {faqs.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <div key={index} className={`faq-card ${isOpen ? 'open' : ''}`}>
-              <button className="faq-header-button" onClick={() => toggleFaq(index)}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <FaCircleQuestion size={20} style={{ color: '#8B1E2D', flexShrink: 0 }} />
-                  <span className="faq-question-title">{faq.question}</span>
+      {/* Main Section */}
+      <section className="philosophy-main-section">
+        <div className="philosophy-main-container">
+          
+          <div className="faq-list-container">
+            {faqs.map((faq, idx) => {
+              const isOpen = openIndex === idx;
+              return (
+                <div key={idx} className={`faq-item-card ${isOpen ? 'open' : ''}`}>
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="faq-question-btn"
+                  >
+                    <span className="faq-question-text">
+                      <FaCircleQuestion className="faq-icon-question" />
+                      {faq.question}
+                    </span>
+                    <FaChevronDown className="faq-arrow-icon" />
+                  </button>
+
+                  {isOpen && (
+                    <div className="faq-answer-block">
+                      <p className="faq-assamese-text">
+                        {faq.assamese}
+                      </p>
+                      <p className="faq-english-text">
+                        {faq.english}
+                      </p>
+                    </div>
+                  )}
                 </div>
-                <div className="faq-icon-arrow">
-                  <FaChevronDown size={14} />
-                </div>
-              </button>
+              );
+            })}
+          </div>
 
-              {isOpen && (
-                <div className="faq-body-content">
-                  <div className="faq-lang-block">
-                    <h5>English Explanation</h5>
-                    <p>{faq.english}</p>
-                  </div>
+          <div className="faq-help-box">
+            <h3 className="faq-help-title">Have more questions?</h3>
+            <p className="faq-help-desc">
+              Speak directly with our Founder-Chairman Pranab Milan Gogoi.
+            </p>
+            <Link to="/contact" className="btn-hero-primary">
+              <FaHandHoldingHeart /> <span>Get In Touch</span>
+            </Link>
+          </div>
 
-                  <div className="faq-lang-block" style={{ backgroundColor: '#f9fcf9', padding: '1rem', borderRadius: '10px', border: '1px solid #e8f3ea' }}>
-                    <h5 style={{ color: '#8B1E2D' }}>অসমীয়া (Assamese)</h5>
-                    <p style={{ color: '#2c3e50', fontWeight: 500 }}>{faq.assamese}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* CTA Button */}
-      <div style={{ textAlign: 'center', marginTop: '3rem', marginBottom: '2rem' }}>
-        <Link to="/contribution" className="btn-hero-primary">
-          <FaHandHoldingHeart size={18} />
-          <span>Provide Relief Materials</span>
-        </Link>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

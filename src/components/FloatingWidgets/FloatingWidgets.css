@@ -28,27 +28,27 @@
 }
 
 .floating-btn.whatsapp-btn {
-  background-color: #25D366;
+  background-color: #48A047;
 }
 
 .floating-btn.whatsapp-btn:hover {
-  background-color: #1EBE57;
+  background-color: #367B35;
   transform: scale(1.08);
 }
 
 .floating-btn.call-btn {
-  background-color: #064030;
-  border: 1.5px solid #F4D35E;
+  background-color: #005C8A;
+  border: none;
 }
 
 .floating-btn.call-btn:hover {
-  background-color: #8B1E2D;
+  background-color: #004366;
   transform: scale(1.08);
 }
 
 .floating-btn.scroll-top-btn {
   background-color: #ffffff;
-  color: #0b6b4f !important;
+  color: #003853 !important;
   border: 1px solid #e2e8f0;
 }
 
@@ -56,7 +56,7 @@
   position: absolute;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #0b6b4f;
+  color: #003853;
 }
 
 .btn-mobile-label {
@@ -66,10 +66,10 @@
 .tooltip-text {
   position: absolute;
   right: 62px;
-  background-color: #064030;
+  background-color: #003853;
   color: #ffffff;
   padding: 0.4rem 0.8rem;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;

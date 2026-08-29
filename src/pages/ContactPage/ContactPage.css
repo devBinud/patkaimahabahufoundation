@@ -8,7 +8,7 @@
 
 /* Hero Header */
 .contact-hero-header {
-  background: linear-gradient(135deg, #0b6b4f 0%, #064030 100%);
+  background: linear-gradient(135deg, #003853 0%, #005C8A 100%);
   padding: 4rem 1.5rem 4.5rem;
   color: #ffffff;
   text-align: center;
@@ -24,7 +24,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #F4D35E;
+  color: #E58325;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.85rem;
@@ -42,7 +42,7 @@
 .contact-hero-tag {
   font-size: 0.8rem;
   font-weight: 800;
-  color: #F4D35E;
+  color: #E58325;
   letter-spacing: 0.12em;
   display: block;
   margin-bottom: 0.5rem;
@@ -217,5 +217,30 @@
 @media (max-width: 900px) {
   .contact-grid-layout {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-hero-header {
+    padding: 2.25rem 1rem 3.5rem !important;
+  }
+
+  .contact-hero-title {
+    font-size: 1.65rem !important;
+  }
+
+  .contact-main-section {
+    padding: 0 0.75rem 3rem !important;
+  }
+
+  .contact-details-card,
+  .contact-sidebar-card {
+    padding: 1.4rem 1.1rem !important;
+    border-radius: 18px !important;
+  }
+
+  .contact-org-title {
+    font-size: 1.25rem !important;
   }
 }

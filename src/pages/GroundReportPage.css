@@ -8,7 +8,7 @@
 
 /* Hero Header */
 .ground-hero-header {
-  background: linear-gradient(135deg, #0b6b4f 0%, #064030 100%);
+  background: linear-gradient(135deg, #003853 0%, #005C8A 100%);
   padding: 4rem 1.5rem 4.5rem;
   color: #ffffff;
   text-align: center;
@@ -24,7 +24,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #F4D35E;
+  color: #E58325;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.85rem;
@@ -42,7 +42,7 @@
 .ground-hero-tag {
   font-size: 0.8rem;
   font-weight: 800;
-  color: #F4D35E;
+  color: #E58325;
   letter-spacing: 0.12em;
   display: block;
   margin-bottom: 0.5rem;
